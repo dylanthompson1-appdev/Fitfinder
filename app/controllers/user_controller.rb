@@ -29,6 +29,20 @@ class UserController < ApplicationController
     render("user_templates/feed.html.erb")
   end
 
+  def user_page
+
+  input_username = params.fetch("path_username")
+
+  matching_users = User.where({ :username => input_username})
+  @the_user = matching_users.at(0)
+
+  if @the_user == nil
+    redirect_to("/")
+  else
+  render("user_templates/user_page.html.erb")
+  end
+  end
+
   def signup_form
     render("user_templates/signup.html.erb")
   end
@@ -48,7 +62,7 @@ class UserController < ApplicationController
     if save_status == true
       session.store(:user_id, @user.id)
    
-      redirect_to("/", { :notice => "Account created successfully!"})
+      redirect_to("/user/@user.username", { :notice => "Account created successfully!"})
     else
       redirect_to("/signup", { :alert => @user.errors.full_messages.to_sentence })
     end

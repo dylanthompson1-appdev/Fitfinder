@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  brand      :string
 #  image      :string
+#  name       :string
 #  type       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
