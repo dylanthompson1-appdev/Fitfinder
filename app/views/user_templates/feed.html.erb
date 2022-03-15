@@ -23,7 +23,7 @@
   </td>
   <%post_owner = User.where( :id => a_post.owner_id).at(0)%>
   <td>
-  <a href="/user/<%= a_post.image%>"><%= post_owner.username%></a>
+  <a href="/user/<%= post_owner.username%>"><%= post_owner.username%></a>
   </td>
   </tr>
   <% end %>

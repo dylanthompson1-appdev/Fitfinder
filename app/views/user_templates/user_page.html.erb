@@ -9,7 +9,7 @@
 <% 
 all_posts = Post.all 
 
-user_posts = all_posts.where( :owner_id => @the_user.id)
+user_posts = all_posts.where( :owner_id => @the_user.id).order('created_at desc')
 
 %>
 
