@@ -16,7 +16,7 @@ f.follower_id = follower_user_id
 
 f.save
 
-redirect_to("/user/#{followed_user.username}")
+redirect_to("/user/#{followed_user.username}", { :notice => "You followed #{followed_user.username}!"})
 
 end
 

@@ -25,6 +25,32 @@
   </div>
 <% end %>
 
+
+<style>
+  table {
+    
+    margin: 25px 25px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+ td, th {
+  padding: 12px 15px; 
+
+}
+
+th, td {
+  background-color: #D8E5D0;
+}
+
+table tbody tr {
+    border-bottom: 10px solid #E5DDD0;
+}
+
+
+</style>
+
     <%if session[:user_id] == nil %>
     <a href="/signin">Sign In!</a>
     <a href="/signup">Sign Up!</a>
@@ -40,7 +66,7 @@
 
 
 
-  <body>
+  <body style="background-color:#E5DDD0;">
     <%= yield %>
   </body>
 </html>

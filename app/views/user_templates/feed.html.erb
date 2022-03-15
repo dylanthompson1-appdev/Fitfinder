@@ -5,19 +5,27 @@
     <h1>Your feed<h1>
     <%end%>
 
-    <%= session[:user_id]%>
-
+<hr>
 <% my_following = Following.where( :follower_id => session[:user_id])%>
 <table>
   <% my_following.each do |a_user|%>
-  <% followed_user = User.where( :id => a_user)%>
-  <% followed_posts = Post.where( :owner_id => followed_user)%>
-      <% followed_posts.each do |a_post|%>
-        <tr>
-          <td> <img src="<%= a_post.image %>" alt="Image of the item" style="width:250px;height:250px;"></td>
-          <td> <%= a_post.caption %></td>
-          <td> <%= a_post.owner_id %></td>
-        </tr>
-      <% end %>
+  <% followed_leader_id = Following.where( :leader_id => a_user.leader_id).at(0)%>
+  <%followed_user = User.where( :id => followed_leader_id.leader_id).at(0)%>
+  <%user_posts = Post.where( :owner_id => followed_user.id).order('created_at desc')%>
+  <tr>
+  <% user_posts.each do |a_post|%>
+  
+  <td> 
+  <img src="<%= a_post.image%>" alt="Image of the fit" style="width:250px;height:250px;">
+  </td>
+  <td>
+  <%= a_post.caption%>
+  </td>
+  <%post_owner = User.where( :id => a_post.owner_id).at(0)%>
+  <td>
+  <a href="/user/<%= a_post.image%>"><%= post_owner.username%></a>
+  </td>
+  </tr>
+  <% end %>
 <% end %>
 </table>
