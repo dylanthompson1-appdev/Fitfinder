@@ -1,10 +1,40 @@
 class UserController < ApplicationController
+  
+  def toast_cookies
+    reset_session
+
+    redirect_to("/", { :notice => "See you soon!"})
+  end
+
+  def authenticate
+
+  un = params.fetch("query_username")
+  pw = params.fetch("query_password")
+
+  user = User.where({ :username => un}).at(0)
+
+  if user == nil
+    redirect_to("/signin", { :alert => "No account matching this username"})
+    else
+      if user.authenticate(pw)
+        session.store( :user_id, user.id)
+        redirect_to("/", { :notice => "Welcome back, " + user.username + "!"})
+      else
+        redirect_to("/signin", { :alert => "Incorrect password"})
+      end
+    end
+  end
+
   def feed
     render("user_templates/feed.html.erb")
   end
 
   def signup_form
     render("user_templates/signup.html.erb")
+  end
+
+  def new_session_form
+    render("user_templates/signin.html.erb")
   end
 
   def create
@@ -16,11 +46,11 @@ class UserController < ApplicationController
     save_status = @user.save
 
     if save_status == true
-      session[:user_id] = @user.id
+      session.store(:user_id, @user.id)
    
-      redirect_to("/", { :notice => "User account created successfully."})
+      redirect_to("/", { :notice => "Account created successfully!"})
     else
-      redirect_to("/user_sign_up", { :alert => @user.errors.full_messages.to_sentence })
+      redirect_to("/signup", { :alert => @user.errors.full_messages.to_sentence })
     end
   end
 end
