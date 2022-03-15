@@ -6,7 +6,7 @@
 #  brand      :string
 #  image      :string
 #  name       :string
-#  type       :string
+#  style      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

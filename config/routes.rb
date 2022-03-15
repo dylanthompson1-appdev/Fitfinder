@@ -18,4 +18,16 @@ get("/user/:path_username", { :controller => "user", :action => "user_page"})
 get("/pieces", { :controller => "piece", :action => "show_pieces"})
 
 get("/pieces/:url_piece", { :controller => "piece", :action => "piece_details"})
+
+get("/create_piece", { :controller => "piece", :action => "new_piece_form"})
+
+post("/insert_piece", { :controller => "piece", :action => "create"})
+
+get("/new_post/:url_piece", { :controller => "post", :action => "new_post_form"})
+
+post("/insert_post", { :controller => "post", :action => "create"})
+
+get("/post/:post_id", { :controller => "post", :action => "show"})
+
+get("/delete_post/:post_id", { :controller => "post", :action => "toast"})
 end

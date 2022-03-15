@@ -1,2 +1,30 @@
 <h1><%=@the_user.username%>'s page</h1>
 
+<table>
+<tr>
+<% 
+all_posts = Post.all 
+
+user_posts = all_posts.where( :owner_id => @the_user.id)
+
+%>
+
+<table>
+<% user_posts.each do |a_post|%>
+  <tr>
+    <td> <%= a_post.caption %></td>
+    <td> <img src="<%= a_post.image %>" alt="Image of the item" style="width:250px;height:250px;"></td>
+    <td> <a href="/pieces/<%= a_post.item_id %>">See the item</a></td>
+    <%if session[:user_id] == @the_user.id%>
+    <%then%>
+    <td><a href="/delete_post/<%= a_post.id%>">Delete this post</a></td>
+    <% end %>
+  </tr>
+  <% end %>
+  </table>
+<td>
+
+</td>
+
+</tr>
+</table>

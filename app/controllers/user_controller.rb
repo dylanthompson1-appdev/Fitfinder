@@ -62,7 +62,7 @@ class UserController < ApplicationController
     if save_status == true
       session.store(:user_id, @user.id)
    
-      redirect_to("/user/@user.username", { :notice => "Account created successfully!"})
+      redirect_to("/user/#{@user.username}", { :notice => "Account created successfully!"})
     else
       redirect_to("/signup", { :alert => @user.errors.full_messages.to_sentence })
     end

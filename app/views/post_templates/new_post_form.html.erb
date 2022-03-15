@@ -1,0 +1,23 @@
+Create Post for <%= @the_item.name%>
+<form action="/insert_post" method="post">
+
+  
+  <div>
+    <label for="image_box">Image Url</label>
+    <input id="image_box" name="query_image" placeholder="Image URL goes here...">
+  </div>
+         
+  <div>
+    <label for="caption_box">Caption</label>
+    <input id="caption_box" name="query_caption" placeholder="Caption goes here...">
+  </div>
+
+
+  <input type="hidden" id="query_item_id" name="query_item_id" value="<%=@the_item.id%>">
+ 
+  <input type="hidden" id="query_user_id" name="query_user_id" value="<%=session[:user_id]%>">
+
+  <button>
+    Post!
+  </button>
+</form>

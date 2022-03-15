@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_15_040255) do
+ActiveRecord::Schema.define(version: 2022_03_15_054424) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2022_03_15_040255) do
   create_table "pieces", force: :cascade do |t|
     t.string "image"
     t.string "brand"
-    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.string "style"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_040255) do
     t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id"
   end
 
   create_table "users", force: :cascade do |t|

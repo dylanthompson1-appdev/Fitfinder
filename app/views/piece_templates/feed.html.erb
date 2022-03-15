@@ -1,13 +1,28 @@
+<style>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #bee2e6;
+}
+</style>
+
+
 <h1>Pieces<h1>
 
-<% all_pieces = Pieces.all %>
+<% all_pieces = Piece.all %>
 
 <table>
 <% all_pieces.each do |a_piece|%>
   <tr>
-    <td> a_piece.name</td>
-    <td> a_piece.image</td>
-    <td> <a href="/piece/a_piece.name">details</a></td>
+    <td> <%= a_piece.name %></td>
+    <td> <img src="<%= a_piece.image %>" alt="Image of the item" style="width:250px;height:250px;"></td>
+    <td> <%= a_piece.brand %></td>
+    <td> <%= a_piece.style %></td>
+    <td> <a href="/pieces/<%=a_piece.id%>">Details</a></td>
   </tr>
   <% end %>
   </table>
+
+  <div><a href="/create_piece">Don't see what you're looking for? Add it!</a></div>
