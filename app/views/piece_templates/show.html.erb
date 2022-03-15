@@ -8,3 +8,15 @@
 <h2><a href="/new_post/<%= @the_piece.id %>">Post this item!</a></h2>
 <hr>
 <h1>See outfits featuring <%= @the_piece.name%></h1>
+
+<% outfits = Post.where( :item_id => @the_piece.id) %>
+<table>
+<% outfits.each do |an_outfit|%>
+  <tr>
+    <td> <img src="<%= an_outfit.image %>" alt="Image of the fit" style="width:250px;height:250px;"></td>
+    <td> <%= an_outfit.caption %></td>
+    <td> <% the_poster = User.where( :id => an_outfit.owner_id).at(0) %>
+    Posted by <a href="/user/<%=the_poster.username%>"><%=the_poster.username%></a></td>
+  </tr>
+  <% end %>
+  </table>

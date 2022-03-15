@@ -1,5 +1,9 @@
 <h1><%=@the_user.username%>'s page</h1>
+<hr>
 
+<% if session[:user_id] != nil && session[:user_id] != @the_user.id %>
+<h3><a href="/follow/<%=@the_user.id%>">Follow <%=@the_user.username%>!</a></h3>
+<%end%>
 <table>
 <tr>
 <% 
@@ -8,6 +12,10 @@ all_posts = Post.all
 user_posts = all_posts.where( :owner_id => @the_user.id)
 
 %>
+
+<% if user_posts.count == 0 %>
+<h1>This user has no posts :(</h1>
+<% end %>
 
 <table>
 <% user_posts.each do |a_post|%>

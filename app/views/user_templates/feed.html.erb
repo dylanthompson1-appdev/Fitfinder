@@ -1,1 +1,23 @@
-hi
+    <%if session[:user_id] == nil %>
+    <h1>You aren't signed in!</h1>
+    <h2>Make a free account to start tailoring your feed!</h2>
+    <% else %>
+    <h1>Your feed<h1>
+    <%end%>
+
+    <%= session[:user_id]%>
+
+<% my_following = Following.where( :follower_id => session[:user_id])%>
+<table>
+  <% my_following.each do |a_user|%>
+  <% followed_user = User.where( :id => a_user)%>
+  <% followed_posts = Post.where( :owner_id => followed_user)%>
+      <% followed_posts.each do |a_post|%>
+        <tr>
+          <td> <img src="<%= a_post.image %>" alt="Image of the item" style="width:250px;height:250px;"></td>
+          <td> <%= a_post.caption %></td>
+          <td> <%= a_post.owner_id %></td>
+        </tr>
+      <% end %>
+<% end %>
+</table>

@@ -13,13 +13,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all' %>
 
-    <a href="/signup">Sign Up!</a>
-    <a href="/signin">Sign In!</a>
-    <a href="/signout">Sign Out!</a>
-    <a href="/pieces">All pieces!</a>
-  </head>
-
-
 <% if notice.present? %>
   <div class="alert alert-success" role="alert">
     <%= notice %>
@@ -31,6 +24,21 @@
     <%= alert %>
   </div>
 <% end %>
+
+    <%if session[:user_id] == nil %>
+    <a href="/signin">Sign In!</a>
+    <a href="/signup">Sign Up!</a>
+    <% else %>
+    You are signed in as <%=User.where( :id => session[:user_id]).at(0).username%>
+    <a href="/signout">Sign Out!</a>
+    <%end%>
+<hr>
+    <a href="/">My feed!</a>
+    <a href="/pieces">All pieces!</a>
+  </head>
+
+
+
 
   <body>
     <%= yield %>
