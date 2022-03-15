@@ -1,8 +1,13 @@
 <h1>Pieces<h1>
 
-<%Pieces.each do |a_piece|%>
+<% all_pieces = Pieces.all %>
+
+<table>
+<% all_pieces.each do |a_piece|%>
   <tr>
     <td> a_piece.name</td>
     <td> a_piece.image</td>
-    <td> <a href="/piece/"a_piece.name</td>
+    <td> <a href="/piece/a_piece.name">details</a></td>
   </tr>
+  <% end %>
+  </table>
