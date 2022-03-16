@@ -32,4 +32,6 @@ get("/post/:post_id", { :controller => "post", :action => "show"})
 get("/delete_post/:post_id", { :controller => "post", :action => "toast"})
 
 get("/follow/:followed_id", { :controller => "follower", :action => "follow"})
+
+get("/unfollow/:followed_id", { :controller => "follower", :action => "unfollow"})
 end

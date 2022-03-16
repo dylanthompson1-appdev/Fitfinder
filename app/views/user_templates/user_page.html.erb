@@ -1,8 +1,11 @@
 <h1><%=@the_user.username%>'s page</h1>
 <hr>
+<% visitor_following = Following.where(:follower_id => session[:user_id])%>
 
-<% if session[:user_id] != nil && session[:user_id] != @the_user.id %>
+<% if session[:user_id] != nil && session[:user_id] != @the_user.id && visitor_following.where(:leader_id => @the_user.id).exists? == false %>
 <h3><a href="/follow/<%=@the_user.id%>">Follow <%=@the_user.username%>!</a></h3>
+<% elsif session[:user_id] != nil && session[:user_id] != @the_user.id && visitor_following.where(:leader_id => @the_user.id).exists? == true %>
+<h3><a href="/unfollow/<%=@the_user.id%>">Unfollow <%=@the_user.username%></a></h3>
 <%end%>
 <table>
 <tr>
