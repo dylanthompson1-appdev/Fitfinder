@@ -29,6 +29,11 @@ class UserController < ApplicationController
     render("user_templates/feed.html.erb")
   end
 
+def user_list
+
+render("user_templates/user_list.html.erb")
+
+end
   def user_page
 
   input_username = params.fetch("path_username")

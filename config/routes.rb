@@ -13,6 +13,8 @@ get("/signin", { :controller => "user", :action => "new_session_form"})
 
 post("/verify_user", { :controller => "user", :action => "authenticate"})
 
+get("/user", { :controller => "user", :action => "user_list"})
+
 get("/user/:path_username", { :controller => "user", :action => "user_page"})
 
 get("/pieces", { :controller => "piece", :action => "show_pieces"})

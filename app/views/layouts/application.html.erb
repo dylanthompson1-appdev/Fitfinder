@@ -27,6 +27,12 @@
 
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Ramaraja&display=swap');
+
+
+
+  
   table {
     border-collapse: collapse;
     margin: 25px 25px;
@@ -43,35 +49,65 @@
 }
 
 th, td {
-  background-color: #D8E5D0;
+  background-color: #b69f8a;
  
 }
 
 table tbody tr {
-    border-bottom: 10px solid #C9C2B7;
+    border-bottom: 10px solid #D0C5BA;
     
 }
+a { font-family:'Quicksand', sans-serif;;
+font-size: 1.3em;
+margin-left:20px;
+
+}
+th, td {
+font-family: 'Quicksand', sans-serif;
+ color: #67595E;
+margin-left:20px;
+font-size: 1.3em;
+
+}
+
+html{ padding-bottom: 50px;}
+
+div, h1, h2, h3, h4, text {
+ font-family: 'Quicksand', sans-serif;
+ color: #67595E;
+margin-left:20px;
+
 
 
 </style>
+
+
+
+<%= image_tag ("logo/fitfinder2.png") %>
+
+
 
     <%if session[:user_id] == nil %>
     <a href="/signin">Sign In!</a>
     <a href="/signup">Sign Up!</a>
     <% else %>
-    You are signed in as <%=User.where( :id => session[:user_id]).at(0).username%>
+    <h4>You are signed in as <%=User.where( :id => session[:user_id]).at(0).username%></h4>
     <a href="/signout">Sign Out!</a>
+    
     <%end%>
 <hr>
     <a href="/">My feed!</a>
     <a href="/pieces">All pieces!</a>
+    <%if session[:user_id] != nil %>
     <a href="/user/<%=User.where( :id => session[:user_id]).at(0).username%>">Your page!</a>
+    <%end%>
+    <a href="/user">All users!</a>
   </head>
 
 
 
 
-  <body style="background-color:#E5DDD0;">
+  <body style="background-color: #ede0d4;">
     <%= yield %>
   </body>
 </html>

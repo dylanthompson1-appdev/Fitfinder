@@ -34,8 +34,9 @@ def create
   save_status = @post.save
 
   if save_status == true
-  
-    redirect_to("/post/#{@post.id}", { :notice => "Post created successfully!"})
+  user_id = session[:user_id]
+  poster = User.where( :id => user_id).at(0)
+    redirect_to("/user/#{poster.username}", { :notice => "Post created successfully!"})
   else
     redirect_to("/new_post_form", { :alert => @post.errors.full_messages.to_sentence })
   end

@@ -37,7 +37,7 @@ def create
 
   if save_status == true
  
-    redirect_to("/pieces/<%=@piece.id%>", { :notice => "Item added successfully!"})
+    redirect_to("/pieces/#{@piece.id}", { :notice => "Item added successfully!"})
   else
     redirect_to("/create_piece", { :alert => @piece.errors.full_messages.to_sentence })
   end

@@ -1,0 +1,20 @@
+<h1>All users</h1>
+<% users = User.all %>
+
+<table>
+<tr>
+<td><h3>User</h3></td>
+<td><h3>Most recent post</h3></td>
+</tr>
+<% users.each do |a_user|%>
+<% posts = Post.where( :owner_id => a_user.id)%>
+  <tr>
+    <td><a href="/user/<%= a_user.username %>"><%=a_user.username%></a></td>
+    <%if posts.exists?%>
+    <td> <img src="<%= posts.last.image %>" alt="Image of the item" style="width:250px;height:auto;"></td>
+    <%else%>
+    <td>This user has no posts</td>
+    <%end%>
+  </tr>
+  <% end %>
+  </table>

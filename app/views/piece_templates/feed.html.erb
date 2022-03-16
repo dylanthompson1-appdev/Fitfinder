@@ -16,7 +16,7 @@
 <% all_pieces.each do |a_piece|%>
   <tr>
     <td> <%= a_piece.name %></td>
-    <td> <img src="<%= a_piece.image %>" alt="Image of the item" style="width:250px;height:250px;"></td>
+    <td> <img src="<%= a_piece.image %>" alt="Image of the item" style="width:250px;height:auto;"></td>
     <td> <%= a_piece.brand %></td>
     <td> <%= a_piece.style %></td>
     <td> <a href="/pieces/<%=a_piece.id%>">Details</a></td>

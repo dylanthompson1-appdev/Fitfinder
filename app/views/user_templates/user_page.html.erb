@@ -24,7 +24,7 @@ user_posts = all_posts.where( :owner_id => @the_user.id).order('created_at desc'
 <% user_posts.each do |a_post|%>
   <tr>
     <td> <%= a_post.caption %></td>
-    <td> <img src="<%= a_post.image %>" alt="Image of the item" style="width:250px;height:250px;"></td>
+    <td> <img src="<%= a_post.image %>" alt="Image of the item" style="width:250px;height:auto;"></td>
     <td> <a href="/pieces/<%= a_post.item_id %>">See the item</a></td>
     <%if session[:user_id] == @the_user.id%>
     <%then%>
@@ -33,9 +33,3 @@ user_posts = all_posts.where( :owner_id => @the_user.id).order('created_at desc'
   </tr>
   <% end %>
   </table>
-<td>
-
-</td>
-
-</tr>
-</table>
